@@ -26,4 +26,23 @@ public class _03_ThreadAPI {
         Thread t = Thread.currentThread();
         System.out.println(t.getName());//main
     }
+
+
+    //todo 4.线程优先级
+    // getPriority()
+    // setPriority()
+    @Test
+    public void test03(){
+        mT mt = new mT();
+        System.out.println(mt.getPriority());
+
+    }
+
+
+}
+class mT extends Thread{
+    @Override
+    public void run() {
+        System.out.println("MT");
+    }
 }
