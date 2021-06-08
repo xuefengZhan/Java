@@ -62,12 +62,12 @@ public class _01_file {
     //todo 4.操作文件
     public void test04() throws IOException {
         // 4.1创建文件  createNewFile()  如果文件已经存在，返回false
-        File file = new File("D:/IO_test/helloIO");
+        File file = new File("testFile.txt");
         file.createNewFile();
 
 
         // 4.2 删除文件
-        File file1 = new File("D:/IO_test/helloIO");
+        File file1 = new File("testFile.txt");
         file1.delete();
 
         file1.deleteOnExit();//当退出JVM时，删除文件，一般用于删除临时文件
@@ -110,8 +110,9 @@ public class _01_file {
 
 
     }
+
     @Test
-    //todo 6.3 递归 实现打印一个目录下所有file名称
+    //todo 7.递归 实现打印一个目录下所有file名称
 
     public void test07(){
         File file = new File("D:\\开发工具");
@@ -127,6 +128,8 @@ public class _01_file {
         }
         System.out.println(dir);
     }
+
+
     @Test
     //todo 8.列出一个目录的大小
     public void test08(){

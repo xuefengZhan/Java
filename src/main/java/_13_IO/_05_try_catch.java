@@ -6,12 +6,12 @@ import java.io.*;
 
 public class _05_try_catch {
     public static void main(String[] args) throws IOException {
-        //从d:/1.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
-        FileInputStream fis = new FileInputStream("d:/1.txt");
+        //从d:/scanner.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
+        FileInputStream fis = new FileInputStream("d:/scanner.txt");
         InputStreamReader isr = new InputStreamReader(fis,"GBK");
         BufferedReader br = new BufferedReader(isr);
 
-        FileOutputStream fos = new FileOutputStream("1.txt");
+        FileOutputStream fos = new FileOutputStream("scanner.txt");
         OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
         BufferedWriter bw = new BufferedWriter(osw);
 
@@ -33,7 +33,7 @@ public class _05_try_catch {
 
 
     public void test01(){
-        //从d:/1.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
+        //从d:/scanner.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
         //第一步：声明并初始化要用到的资源为NUll
         FileInputStream fis = null;
         InputStreamReader isr = null;
@@ -43,11 +43,11 @@ public class _05_try_catch {
         BufferedWriter bw = null;
         //第二步：将IO流对象的创建放在try块中
         try {
-            fis = new FileInputStream("d:/1.txt");
+            fis = new FileInputStream("d:/scanner.txt");
             isr = new InputStreamReader(fis,"GBK");
             br = new BufferedReader(isr);
 
-            fos = new FileOutputStream("1.txt");
+            fos = new FileOutputStream("scanner.txt");
             osw = new OutputStreamWriter(fos,"UTF-8");
             bw = new BufferedWriter(osw);
 
@@ -112,12 +112,12 @@ public class _05_try_catch {
     @Test
     // 减少流的关闭   关闭最外层会帮我们关闭内层流
     public void test02() {
-        //从d:/1.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
+        //从d:/scanner.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
         BufferedReader br = null;
         BufferedWriter bw = null;
         try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream("d:/1.txt"),"GBK"));
-            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("1.txt"),"UTF-8"));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream("d:/scanner.txt"),"GBK"));
+            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("scanner.txt"),"UTF-8"));
 
             String str;
             while((str = br.readLine()) != null){
@@ -171,13 +171,13 @@ public class _05_try_catch {
     public class TestTryWithResource {
         @Test
         public void test03() {
-            //从d:/1.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
+            //从d:/scanner.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
             try (
-                    FileInputStream fis = new FileInputStream("d:/1.txt");
+                    FileInputStream fis = new FileInputStream("d:/scanner.txt");
                     InputStreamReader isr = new InputStreamReader(fis, "GBK");
                     BufferedReader br = new BufferedReader(isr);
 
-                    FileOutputStream fos = new FileOutputStream("1.txt");
+                    FileOutputStream fos = new FileOutputStream("scanner.txt");
                     OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
                     BufferedWriter bw = new BufferedWriter(osw);
             ) {

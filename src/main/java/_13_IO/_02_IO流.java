@@ -3,42 +3,49 @@ package _13_IO;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class _02_IO流 {
-    @Test
-    public void test00(){
-        //todo 1.IO四大基本父类
-        // 字节输入输出流：InputStream,OutputStream
-        // 字符输入输出流: Reader,Writer
 
-    }
+    //todo 1.IO四大基本父类
+    // 字节输入输出流：InputStream,OutputStream
+    // 字符输入输出流: Reader,Writer
+
+
     @Test
-    //todo 从文本文件读取数据
+    //todo 2.从文本文件读取数据
     public void test01() throws IOException {
-        File file = new File("C:\\Users\\Administrator\\Desktop\\单词本.txt");
+        File file = new File("古诗.txt");
         //todo 第一步：选择IO流，如果读取文件就用File，纯文本就用Reader文本文件用字符流
         FileReader file1 = new FileReader(file);
-        //todo 第二步:从流中读取数据
+        //todo 第二步:循环从流中读取数据
         int len;
-       while(( len = file1.read()) != -1){
+        while(( len = file1.read()) != -1){
            System.out.println(len);
-       }
-
+        }
         //todo 第三步：关闭流
         file1.close();
 
+        // filereader 的read()方法返回的是Unicode编码值  int类型 0~65535
+        System.out.println(Charset.defaultCharset());//UTF-8
+        System.out.println(Arrays.toString("将进酒".getBytes()));//[-27, -80, -122, -24, -65, -101, -23, -123, -110]
+
+
     }
+
     @Test
     //todo 从文本文件读取数据
     public void test02() throws IOException {
-        File file = new File("C:\\Users\\Administrator\\Desktop\\单词本.txt");
+        File file = new File("古诗.txt");
         //todo 第一步：选择IO流，如果读取文件就用File，纯文本就用Reader文本文件用字符流
         FileReader file1 = new FileReader(file);
 
 
         //todo 第二步:从流中读取数据
         char[] arr = new char[10];
+
         while(true){
             int len = file1.read(arr);
             if(len == -1){
@@ -46,17 +53,20 @@ public class _02_IO流 {
             }
             //String 构造器指定 char[] 的范围
             String s = new String(arr,0,len);
+
             System.out.print(s);
+            //System.out.println("---");
         }
 
         //todo 第三步：关闭流
         file1.close();
 
     }
+
     @Test
     //todo 写一些数据到文本文件中
     public void test03() throws IOException {
-        File f = new File("D:/write.txt");
+        File f = new File("write.txt");
         FileWriter fileWriter = new FileWriter(f);
         String s = "瘦小离家胖了回\n" +
                    "乡音无改肉成堆";
@@ -76,6 +86,7 @@ public class _02_IO流 {
         scanner.nextInt(); //todo 只会读取整数  如果有换行，换行符不会被读取，还在流中
         System.out.println(next);
     }
+
     @Test
     //copy 纯文本文件
     public void test05(){
