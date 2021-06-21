@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class _02_IO流 {
+public class _05_案例 {
 
     //todo 1.IO四大基本父类
     // 字节输入输出流：InputStream,OutputStream

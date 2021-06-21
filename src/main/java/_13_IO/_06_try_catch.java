@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.io.*;
 
-public class _05_try_catch {
+public class _06_try_catch {
     public static void main(String[] args) throws IOException {
         //从d:/scanner.txt(GBK)文件中，读取内容，写到项目根目录下1.txt(UTF-8)文件中
         FileInputStream fis = new FileInputStream("d:/scanner.txt");
