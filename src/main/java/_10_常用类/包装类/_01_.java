@@ -38,4 +38,9 @@ public class _01_ {
         // 两个对象必须有父子关系或者同一类型才能比较
 
     }
+    @Test
+    public void test04(){
+        int i = Integer.highestOneBit(16);
+        System.out.println(i);
+    }
 }

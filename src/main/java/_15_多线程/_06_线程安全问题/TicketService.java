@@ -1,31 +1,21 @@
 package _15_多线程._06_线程安全问题;
 
-import java.util.ArrayList;
 
 public class TicketService {
-    private ArrayList<String> list;
-    public TicketService(){
-        list = new ArrayList<String>();
-        list.add("01车01A");
-        list.add("01车01B");
-        list.add("01车01C");
-        list.add("01车01D");
-        list.add("01车01E");
-        list.add("01车02A");
-        list.add("01车02B");
-        list.add("01车02C");
-        list.add("01车02D");
-        list.add("01车02E");
+
+    //todo 1.线程之间共享的数据为这个total，静态属性放在方法区=> 方法区数据可以共享
+    //     2.即使total是非静态的，也可以被多个线程共享，但是得保证是同一个对象的 => 堆内存数据可以被共享
+    public  int total = 10;
+
+
+    public void saleTicket(){
+        total--;
     }
     public boolean hasTicket(){
-        return list.size()>0;
+        return total > 0;
     }
 
-    public String buy(){
-        try {
-            return list.remove(0);
-        } catch (IndexOutOfBoundsException e) {
-            throw new RuntimeException("票卖超了");
-        }
+    public int getTotal(){
+        return total;
     }
 }
