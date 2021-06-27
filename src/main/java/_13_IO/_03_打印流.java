@@ -11,7 +11,7 @@ public class _03_打印流 {
     public void test01() throws FileNotFoundException, UnsupportedEncodingException {
         //todo PrintStream 可以输出到文件
         //还可以指定编码格式
-        PrintStream ps = new PrintStream("1.txt","GBK");
+        PrintStream ps = new PrintStream("scanner.txt","GBK");
         ps.println("中文");
         ps.close();
     }
@@ -20,7 +20,7 @@ public class _03_打印流 {
     public void test02() throws FileNotFoundException, UnsupportedEncodingException {
         //todo PrintStream 可以输出到文件
         //还可以指定编码格式
-        PrintStream ps = new PrintStream("1.txt");
+        PrintStream ps = new PrintStream("scanner.txt");
         ps.println(new User("钩子",23,"高","男"));
         ps.close();
 
