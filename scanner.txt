@@ -1,5 +1,0 @@
-文件IO流，和文件的数据传输：
-（1）文件字节输入流：FileInputStream
-（2）文件字节输出流：FileOutputStream
-（3）文件字符输入流：FileReader，只能按照平台默认的编码方式读取数据
-（4）文件字符输出流：FileWriter，只能按照平台默认的编码方式写入数据
