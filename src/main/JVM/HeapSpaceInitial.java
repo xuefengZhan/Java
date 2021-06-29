@@ -1,3 +1,5 @@
+package main.JVM;
+
 public class HeapSpaceInitial {
     public static void main(String[] args) {
         // 返回 Java 虚拟机中的堆内存总量
