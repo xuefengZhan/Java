@@ -1,26 +1,33 @@
 package Bean;
 
+import java.sql.Time;
+
 public class student{
     private int id;
     private String name;
-    private String gender;
-    private int dept_id;
+    private int age;
+    private int gender;
+    private String movie;
+    private Time create_time;
 
-    public student(int id, String name,String gender, int dept_id) {
+    public student(int id, String name, int age, int gender, String movie, Time create_time) {
         this.id = id;
         this.name = name;
-
+        this.age = age;
         this.gender = gender;
-        this.dept_id = dept_id;
+        this.movie=movie;
+        this.create_time = create_time;
     }
 
     @Override
     public String toString() {
-        return "_01_.Bean.student{" +
+        return "student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dept_id=" + dept_id +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", movie='" + movie + '\'' +
+                ", create_time=" + create_time +
                 '}';
     }
 }

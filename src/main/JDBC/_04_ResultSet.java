@@ -1,4 +1,5 @@
 import Bean.student;
+import Utils.JDBCUtils;
 
 import java.sql.*;
 
@@ -11,24 +12,26 @@ public class _04_ResultSet {
 
     public static void main(String[] args) throws SQLException {
 
-        connection = main.JDBC.JDBCUtils.getConnection();
+        connection = JDBCUtils.getConnection();
 
-        String sql = "SELECT * FROM 20_student WHERE dept_id= ?";
+        String sql = "SELECT ? FROM zxf01 WHERE age = ?";
         pst = connection.prepareStatement(sql);
-        //pst.setString(1,"student_name");
-        pst.setInt(1,1);
+        pst.setString(1,"name");
+        pst.setInt(1,10);
         rs = pst.executeQuery(sql);
 
         while(rs.next()){
             int id = rs.getInt(1);
             String name = rs.getString(2);
-            String gender = rs.getString(3);
-            int dept_id = rs.getInt(4);
-
-            System.out.println(new student(id,name,gender,dept_id));
+            int age = rs.getInt(3);
+            int gender = rs.getInt(4);
+            String movie = rs.getString(5);
+            Time create_time = rs.getTime(6);
+            System.out.println(new student(id,name,age,gender,movie,create_time));
 
         }
-        main.JDBC.JDBCUtils.close(connection,pst,rs);
+
+        JDBCUtils.close(connection,pst,rs);
     }
 
 }

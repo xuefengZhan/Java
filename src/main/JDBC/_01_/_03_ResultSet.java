@@ -1,6 +1,7 @@
 package _01_;
 
 import Bean.student;
+import Utils.JDBCUtils;
 
 import java.sql.*;
 
@@ -13,7 +14,7 @@ public class _03_ResultSet {
 
     public static void main(String[] args) throws SQLException {
 
-        connection = main.JDBC.JDBCUtils.getConnection();
+        connection = JDBCUtils.getConnection();
 
         String sql = "select * from 20_student";
         st = connection.createStatement();
@@ -27,10 +28,10 @@ public class _03_ResultSet {
             String gender = rs.getString(3);
             int dept_id = rs.getInt(4);
 
-            System.out.println(new student(id,name,gender,dept_id));
+//            System.out.println(new student(id,name,gender,dept_id));
 
         }
-        main.JDBC.JDBCUtils.close(connection,st,rs);
+        JDBCUtils.close(connection,st,rs);
     }
 
 }

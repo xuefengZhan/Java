@@ -28,7 +28,7 @@ public class c3p0Demo {
             String gender = rs.getString(3);
             int dept_id = rs.getInt(4);
 
-            System.out.println(new student(id,name,gender,dept_id));
+          //  System.out.println(new student(id,name,gender,dept_id));
 
         }
         c3p0Utils.release(connection,pst,rs);
