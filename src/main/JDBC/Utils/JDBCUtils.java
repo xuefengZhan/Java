@@ -14,7 +14,7 @@ public class JDBCUtils {
     static {
 
         try {
-            InputStream resourceAsStream = JDBCUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
+            InputStream resourceAsStream = JDBCUtils.class.getClassLoader().getResourceAsStream("clickhouse.properties");
             Properties properties = new Properties();
             properties.load(resourceAsStream);
 
