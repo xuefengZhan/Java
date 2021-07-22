@@ -14,7 +14,7 @@ public class _04_scanner {
 //        //todo 案例1.next()和hasNext()
 //        // 1.scanner是扫描器，从指定的输入流进行扫描
 //        // 2.in是inputStream类型
-//        // System.in 默认是从缉拿盘输入的数据中扫描
+//        // System.in 默认是从键盘输入的数据中扫描
 //        Scanner scan = new Scanner(System.in);
 //
 //

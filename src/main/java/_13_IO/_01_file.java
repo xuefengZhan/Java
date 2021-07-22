@@ -7,18 +7,12 @@ import java.io.IOException;
 
 public class _01_file {
 
-    //todo 01.认识file类
-    // File类是java.io包下的;
-    // File类代表与平台无关的文件和目录;
-    // File类能新建、删除、重命名文件和目录;
-    // 在API中File的解释是文件和目录路径名的抽象表示形式，即File类是文件或目录的路径，而不是文件本身。
-    //           因此File类不能直接访问文件内容本身，如果需要访问文件内容本身，则需要使用输入/输出流。
-    // 对于File对象来说，输入和输出操作只能针对文件，目录（文件夹）是不可的。
+
 
     @Test
     //todo 02.路径名
     public void test01() throws IOException {
-        File f1 = new File("C:\\Users\\Administrator\\Desktop\\电影.txt");
+        File f1 = new File("E:/work/Java/test/IO/留言.txt");
         System.out.println(f1.getName()); //最后一级名称
 
         System.out.println(f1.getPath()); //file对象的路径
@@ -38,7 +32,7 @@ public class _01_file {
     //todo 03.获取file的常规信息
     // 这些方法没有抛出异常，如果file不存在，结果为默认值
     public void test03(){
-        File f1 = new File("C:\\Users\\Administrator\\Desktop\\电影.txt");
+        File f1 = new File("E:/work/Java/test/IO/留言.txt");
 
         System.out.println(f1.exists());//file对象是否存在
 
