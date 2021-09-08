@@ -16,4 +16,13 @@ public class _03_ {
         System.out.println(i);
     }
 
+    @Test
+    public void test02(){
+        String url = "mongodb://10.20.0.70:27017::sc_audit::driverLocationUploadEntity::61272bc968ccf6000113760e";
+        String[] split = url.split("::");
+        for (String s : split) {
+            System.out.println(s);
+        }
+    }
+
 }

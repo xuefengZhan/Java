@@ -3,7 +3,7 @@ package 线性表;
 public class Stack<E> {
 
 
-    private List<E> list = new DynamicArray<>();
+    private List<E> list = new ArrayList<>();
 
     public void clear(){
         list.clear();

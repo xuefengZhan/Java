@@ -10,7 +10,7 @@ public class _01_ {
         String s1 = "hello";
 
         String s2 = "hello";
-        System.out.println(s1==s1);
+        System.out.println(s1==s2);  //true
 
     }
 
@@ -20,6 +20,7 @@ public class _01_ {
         String s1 = new String("hmp");
         String s2 = new String("hmp");
         System.out.println(s1 == s2);//false
+        System.out.println(s1 == "hmp");//false
         System.out.println(s1.hashCode() == s2.hashCode());//true  内容一样的String对象的hash值是一样的
 
     }
