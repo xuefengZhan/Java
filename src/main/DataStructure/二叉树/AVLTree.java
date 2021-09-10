@@ -13,7 +13,7 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         super(comparator);
     }
 
-    private class AVLNode<E> extends Node<E> {
+    private static class AVLNode<E> extends Node<E> {
         private int height = 1; //默认为1，因为平衡因子判断左右子节点height差为2 如果为0有歧义
 
         public AVLNode() {
@@ -31,7 +31,9 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         }
 
         public void updateHeight() {
-            height = Math.max(((AVLNode<E>) left).height, ((AVLNode<E>) right).height) + 1;
+            int leftHeight = left == null ? 0 : ((AVLNode<E>) left).height;
+            int rightHeight = right == null ? 0 : ((AVLNode<E>) right).height;
+            height = Math.max(leftHeight,rightHeight) + 1;
         }
 
         public Node<E> tallerChild() {
@@ -111,7 +113,10 @@ public class AVLTree<E> extends BinarySearchTree<E> {
     private void switchFather(Node<E> grand, Node<E> t, Node<E> parent) {
         Node<E> father = grand.parent;
         grand.parent = parent;
-        t.parent = grand;
+        if(t != null){
+            t.parent = grand;
+        }
+
         parent.parent = father;
         if (father == null) {
             root = parent;
@@ -129,20 +134,20 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         Node<E> parent = ((AVLNode<E>) grand).tallerChild();
         Node<E> node = ((AVLNode<E>) parent).tallerChild();
 
-        Node<E> farther = grand.parent;
 
-        if (parent == grand.left) {
+        if (parent == grand.left) {//L
             if (node == parent.left) {//LL
                 rotateRight(grand);
             } else {//LR
-
+                rotateLeft(parent);
+                rotateRight(grand);
             }
-
-        } else {
+        } else {//R
             if (node == parent.left) {//RL
-
+                rotateRight(parent);
+                rotateLeft(grand);
             } else {//RR
-
+                rotateLeft(grand);
             }
         }
     }

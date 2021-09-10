@@ -28,7 +28,7 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
     public void add(E element) {
         elementNotNullCheck(element);
         if (root == null) {
-            root = new Node<E>(element, null);
+            root = createNode(element,null);
             return;
         }
 
