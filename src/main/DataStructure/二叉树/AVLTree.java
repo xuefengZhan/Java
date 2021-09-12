@@ -4,7 +4,7 @@ import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTrees;
 
 import java.util.Comparator;
 
-public class AVLTree<E> extends BinarySearchTree<E> {
+public class AVLTree<E> extends BalancedBinarySearchTree<E> {
 
     public AVLTree() {
     }
@@ -62,78 +62,11 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         return new AVLNode<E>(element, parent);
     }
 
-    private void rotateRight(Node<E> grand) {
-        Node<E> parent = grand.left;
-        Node<E> t3 = parent.right;
-        //Node<E> father = grand.parent;
 
-        parent.right = grand;
-        //grand.parent = parent;
-
-        grand.left = t3;
-        // t3.parent = grand;
-
-        // parent.parent = father;
-        //if(father == null){
-        root = parent;
-        //}else{
-        //    if(grand == father.left){
-        //        father.left = parent;
-        //    }else{
-        //        father.right = parent;
-        //    }
-        //}
-        switchFather(grand, t3, parent);
-    }
-
-    private void rotateLeft(Node<E> grand) {
-        Node<E> parent = grand.right;
-        Node<E> t2 = parent.left;
-        //Node<E> father = grand.parent;
-
-        parent.left = grand;
-        //grand.parent = parent;
-
-        grand.right = t2;
-        //t2.parent = grand;
-
-        //parent.parent = father;
-        //if(father == null){
-        //    root = parent;
-        //}else{
-        //   if(grand == father.left){
-        //        father.left = parent;
-        //   }else{
-        //        father.right = parent;
-        //    }
-        // }
-        switchFather(grand, t2, parent);
-    }
-
-    private void switchFather(Node<E> grand, Node<E> t, Node<E> parent) {
-        Node<E> father = grand.parent;
-        grand.parent = parent;
-        if(t != null){
-            t.parent = grand;
-        }
-
-        parent.parent = father;
-        if (father == null) {
-            root = parent;
-        } else {
-            if (grand == father.left) {
-                father.left = parent;
-            } else {
-                father.right = parent;
-            }
-        }
-
-    }
 
     protected void rebalance(Node<E> grand) {
         Node<E> parent = ((AVLNode<E>) grand).tallerChild();
         Node<E> node = ((AVLNode<E>) parent).tallerChild();
-
 
         if (parent == grand.left) {//L
             if (node == parent.left) {//LL
@@ -152,6 +85,12 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         }
     }
 
+    @Override
+    protected void switchFather(Node<E> grand, Node<E> t, Node<E> parent) {
+        super.switchFather(grand, t, parent);
+        updateHeight(grand);
+        updateHeight(parent);
+    }
 
     @Override
     protected void afterAdd(Node<E> node) {
@@ -166,28 +105,42 @@ public class AVLTree<E> extends BinarySearchTree<E> {
             }
         }
     }
-}
 
-class Test2{
-    public static void main(String[] args) {
-        AVLTree<Integer> avlt = new AVLTree<>();
-        //avlt.add()
-        avlt.add(35);
-        avlt.add(37);
-        avlt.add(34);
-        avlt.add(56);
-        avlt.add(25);
-        avlt.add(62);
-        avlt.add(57);
-        avlt.add(9);
-        avlt.add(74);
-        avlt.add(32);
-        avlt.add(94);
-        avlt.add(80);
-        avlt.add(75);
-        avlt.add(100);
-        avlt.add(16);
-        avlt.add(82);
-        BinaryTrees.println(avlt);
+    @Override
+    protected void afterRemove(Node<E> node,Node<E> child) {
+        Node<E> parent = node.parent;
+        while(parent != null){
+            if(isBalance(parent)){
+                updateHeight(parent);
+                parent = parent.parent;
+            }else{
+                rebalance(parent);
+                //重平衡可能导致连锁失衡反应
+            }
+        }
     }
 }
+
+//class Test2{
+//    public static void main(String[] args) {
+//        AVLTree<Integer> avlt = new AVLTree<>();
+//        //avlt.add()
+//        avlt.add(35);
+//        avlt.add(37);
+//        avlt.add(34);
+//        avlt.add(56);
+//        avlt.add(25);
+//        avlt.add(62);
+//        avlt.add(57);
+//        avlt.add(9);
+//        avlt.add(74);
+//        avlt.add(32);
+//        avlt.add(94);
+//        avlt.add(80);
+//        avlt.add(75);
+//        avlt.add(100);
+//        avlt.add(16);
+//        avlt.add(82);
+//        BinaryTrees.println(avlt);
+//    }
+//}

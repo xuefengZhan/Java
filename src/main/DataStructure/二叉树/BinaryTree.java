@@ -38,6 +38,26 @@ public class BinaryTree<E> implements BinaryTreeInfo {
             return left == null && right == null;
         }
 
+        public boolean isLeftChild(){
+            return parent != null && this == this.parent.left;
+        }
+
+        public boolean isRightChild(){
+            return parent != null && this == this.parent.right;
+        }
+
+
+        public Node<E> sibling() { // 红黑树中用到, 返回兄弟节点
+            if (isLeftChild()) {
+                return parent.right;
+            }
+
+            if (isRightChild()) {
+                return parent.left;
+            }
+            return null;
+        }
+
         @Override
         public String toString() {
             return element.toString();

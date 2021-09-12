@@ -24,11 +24,14 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
 
     protected Node<E> createNode(E element,Node<E> parent){ return new Node<E>(element,parent);}
     protected void afterAdd(Node<E> node){}
+    protected void afterRemove(Node<E> node,Node<E> child){}
 
     public void add(E element) {
         elementNotNullCheck(element);
         if (root == null) {
             root = createNode(element,null);
+            afterAdd(root);
+            size++;
             return;
         }
 
@@ -106,6 +109,8 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
                 remove.parent.right = child;
             }
         }
+        //注意删除节点  remove.parent.left or right = child  但是remove.parent 仍然指向parent
+        afterRemove(remove,child);
         size--;
     }
 
@@ -116,34 +121,34 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
 
 }
 
-class Test {
-    public static void main(String[] args) {
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-        bst.add(8);
-        bst.add(4);
-        bst.add(2);
-        bst.add(1);
-        bst.add(3);
-        bst.add(6);
-        bst.add(5);
-        bst.add(7);
-        bst.add(13);
-        bst.add(10);
-        bst.add(9);
-        bst.add(12);
-        bst.add(11);
-        bst.add(15);
-        bst.add(14);
-
-        BinaryTrees.println(bst);
-        System.out.println(bst.height());
-
-        bst.remove(11);
-        BinaryTrees.println(bst);
-
-        System.out.println(bst.height());
-        System.out.println(bst.isComplete());
-
-
-    }
-}
+//class Test {
+//    public static void main(String[] args) {
+//        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+//        bst.add(8);
+//        bst.add(4);
+//        bst.add(2);
+//        bst.add(1);
+//        bst.add(3);
+//        bst.add(6);
+//        bst.add(5);
+//        bst.add(7);
+//        bst.add(13);
+//        bst.add(10);
+//        bst.add(9);
+//        bst.add(12);
+//        bst.add(11);
+//        bst.add(15);
+//        bst.add(14);
+//
+//        BinaryTrees.println(bst);
+//        System.out.println(bst.height());
+//
+//        bst.remove(11);
+//        BinaryTrees.println(bst);
+//
+//        System.out.println(bst.height());
+//        System.out.println(bst.isComplete());
+//
+//
+//    }
+//}
