@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Mybatis/Mybatis.iml" filepath="$PROJECT_DIR$/Mybatis/Mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/_java.iml" filepath="$PROJECT_DIR$/_java.iml" />
       <module fileurl="file://$PROJECT_DIR$/java面试题/java面试题.iml" filepath="$PROJECT_DIR$/java面试题/java面试题.iml" />
       <module fileurl="file://$PROJECT_DIR$/设计模式/设计模式.iml" filepath="$PROJECT_DIR$/设计模式/设计模式.iml" />
