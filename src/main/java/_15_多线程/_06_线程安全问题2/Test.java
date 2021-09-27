@@ -21,7 +21,6 @@ class Ticket implements Runnable{
     @Override
     public void run() {
 
-
         while(true){
             synchronized (this){
                 if(total > 0){

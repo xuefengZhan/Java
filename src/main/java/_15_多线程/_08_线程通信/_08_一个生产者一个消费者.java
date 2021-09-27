@@ -39,7 +39,7 @@ class WorkSpace{
                 wait();
                 //todo wait()必须由锁对象来调用
                 //1.当前wait() 等价于 this.wait() this就是workSpace对象
-                //2.workSpace如何成为锁对象？ 添加同步方法或者同步代码块内
+                //2.workSpace如何成为锁对象？ 添加同步方法或者同步代码块
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

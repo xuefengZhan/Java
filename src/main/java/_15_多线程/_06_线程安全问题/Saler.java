@@ -1,15 +1,20 @@
 package _15_多线程._06_线程安全问题;
 
+
+//买票窗口类
 public class Saler extends Thread{
     private TicketService ts;
 
     //锁对象：Thread子类的静态属性=>所有Saler对象共享的同一个对象
     private static final Object obj = new Object();
 
+
+    //一个窗口对应一个
     public Saler(){
         ts = new TicketService();
     }
 
+    //多个窗口对应一个
     public Saler(TicketService ts) {
         this.ts = ts;
     }

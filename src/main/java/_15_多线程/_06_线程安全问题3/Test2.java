@@ -3,9 +3,9 @@ package _15_多线程._06_线程安全问题3;
 public class Test2 {
     public static void main(String[] args) {
 
-        Ticket t1 = new Ticket("t1");
-        Ticket t2 = new Ticket("t2");
-        Ticket t3 = new Ticket("t3");
+        Ticket1 t1 = new Ticket1("t1");
+        Ticket1 t2 = new Ticket1("t2");
+        Ticket1 t3 = new Ticket1("t3");
 
         t1.start();
         t2.start();
