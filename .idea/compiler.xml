@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="JVM" />
+        <module name="JavaSE" />
+        <module name="JDBC" />
+        <module name="leetcode" />
         <module name="Mybatis" />
+        <module name="数据结构" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="_java" target="1.8" />
+      <module name="JavaSE" target="1.8" />
+      <module name="JDBC" target="1.8" />
+      <module name="JVM" target="1.8" />
+      <module name="leetcode" target="1.8" />
       <module name="Mybatis" target="1.8" />
+      <module name="数据结构" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
