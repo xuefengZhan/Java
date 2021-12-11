@@ -11,7 +11,6 @@
         <module name="JVM" />
         <module name="JavaSE" />
         <module name="JDBC" />
-        <module name="leetcode" />
         <module name="Mybatis" />
         <module name="数据结构" />
       </profile>

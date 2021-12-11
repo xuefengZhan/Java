@@ -1,8 +1,5 @@
 package 二叉树;
 
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTreeInfo;
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTrees;
-
 public class RBTree<E> extends BalancedBinarySearchTree<E> {
     private static final boolean RED = true;
     private static final boolean BLACK = false;

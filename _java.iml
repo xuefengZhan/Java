@@ -9,7 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/JDBC/JDBC" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/JVM/src/JVM" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/JavaSE/src/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/数据结构/src/main/DataStructure" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/leetcode/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/数据结构/src/DataStructure" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

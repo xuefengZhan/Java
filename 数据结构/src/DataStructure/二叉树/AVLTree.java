@@ -1,7 +1,5 @@
 package 二叉树;
 
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTrees;
-
 import java.util.Comparator;
 
 public class AVLTree<E> extends BalancedBinarySearchTree<E> {
