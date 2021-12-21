@@ -46,8 +46,7 @@ public class Quick {
                arr[right] = tmp;
 
               // arr[left] <= pivot && arr[right] > pivot
-              //  left ++;
-              // right --;
+
            }
        }
 
@@ -70,13 +69,15 @@ public class Quick {
             arr[i] = (int) (Math.random() * 100);
         }
         System.out.println(Arrays.toString(arr));
+        int index = findIndex(arr, 0, arr.length - 1);
+        System.out.println(index);
+
         Quick.sort(arr);
         System.out.println(Arrays.toString(arr));
 
 
 
-        int index = findIndex(arr, 0, arr.length - 1);
-        System.out.println(index);
+
 
     }
 }

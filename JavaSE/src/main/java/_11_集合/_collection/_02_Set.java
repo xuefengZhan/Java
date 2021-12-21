@@ -16,5 +16,10 @@ public class _02_Set {
 
         LinkedHashSet<Integer> lhs = new LinkedHashSet<>();
 
-    }}
+    }
+    @Test
+    public void test02(){
+
+    }
+}
 
