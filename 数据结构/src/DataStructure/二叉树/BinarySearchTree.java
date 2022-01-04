@@ -116,9 +116,7 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
     }
 
 
-}
 
-class Test {
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 //        bst.add(8);
@@ -172,3 +170,4 @@ class Test {
 
     }
 }
+

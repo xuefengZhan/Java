@@ -1,23 +1,55 @@
 package 二叉堆;
 
-
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTreeInfo;
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTrees;
-
 import java.util.Comparator;
 
-public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
+public class BinaryHeap<E> extends AbstractHeap<E> {
+
+
     private E[] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public BinaryHeap(Comparator<E> comparator) {
+    public BinaryHeap(E[] elements, Comparator<E> comparator)  {
         super(comparator);
-        this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+
+        if (elements == null || elements.length == 0) {
+            this.elements = (E[]) new Object[DEFAULT_CAPACITY];
+        } else {
+            size = elements.length;
+            int capacity = Math.max(elements.length, DEFAULT_CAPACITY);
+            this.elements = (E[]) new Object[capacity];
+            for (int i = 0; i < elements.length; i++) {
+                this.elements[i] = elements[i];
+            }
+            heapify();
+        }
+    }
+
+    public BinaryHeap(E[] elements)  {
+        this(elements, null);
+    }
+
+    public BinaryHeap(Comparator<E> comparator) {
+        this(null, comparator);
     }
 
     public BinaryHeap() {
-        this(null);
+        this(null, null);
     }
+
+    private int compare(E e1,E e2){
+        if(comparator == null){
+           return  ((Comparable<E>)e1).compareTo(e2);
+        }else{
+            return comparator.compare(e1,e2);
+        }
+    }
+
+    private void nullCheck(E e){
+        if(e == null){
+            throw new RuntimeException("param can not be null");
+        }
+    }
+
 
     @Override
     public void clear() {
@@ -27,60 +59,40 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
         size = 0;
     }
 
-    private void swift(int i, int j) {
-        E tmp = elements[i];
-        elements[i] = elements[j];
-        elements[j] = tmp;
-    }
-
-    private void ensureCapacity(int size) {
-        if (size == 0) {
-            elements = (E[]) new Object[DEFAULT_CAPACITY];
-        }
-        if (size == elements.length) {
-            int oldCapacity = size;
-            int newCapacity = oldCapacity + (oldCapacity >> 1);
-            E[] newElements = (E[]) new Object[newCapacity];
-
+    private void ensureCapacity(int size){
+        if(size > elements.length){
+            E[] newArr = (E[])new Object[elements.length << 1];
             for (int i = 0; i < size; i++) {
-                newElements[i] = elements[i];
+                newArr[i] = elements[i];
             }
-            elements = newElements;
+            elements = newArr;
         }
     }
 
     @Override
     public void add(E element) {
-        elementNotNullCheck(element);
-        ensureCapacity(size + 1);
+        nullCheck(element);
+        ensureCapacity(size+1);
         elements[size++] = element;
-
         siftUp(size - 1);
-
     }
 
+    private void siftUp(int index){
+        //todo 找应该放置的位置
+        E cur = elements[index];
+        //当index > 0的时候才有父节点
+        while(index > 0){
+            int parentIndex = (index  - 1) >> 1;
+            E parent = elements[parentIndex];
 
-    private void siftUp(int index) {
-        E element = elements[index];
+            if(compare(cur,parent) <= 0) break;//找到位置 就是index的位置
 
-        while (index > 0) {
-            int parentIndex = (index - 1) >> 1;
-
-            if (compare(elements[parentIndex], element) >= 0) break;
-
-            elements[index] = elements[parentIndex];
+            elements[index] = parent;
             index = parentIndex;
-
         }
-        elements[index] = element;
+        elements[index] = cur;
     }
 
-
-    private void emptyCheck() {
-        if (size == 0) {
-            throw new IndexOutOfBoundsException("Heap is Empty");
-        }
-    }
 
     @Override
     public E get() {
@@ -88,104 +100,97 @@ public class BinaryHeap<E> extends AbstractHeap<E> implements BinaryTreeInfo {
         return elements[0];
     }
 
-    public void siftDown(int index) {
-        E old = elements[index];
-        while (index <= (size - 2) >> 1) {
-            int leftIndex = (index << 1) + 1;
-            int rightIndex =  leftIndex + 1;
-            int maxIndex = leftIndex;
-
-            if (index <= (size - 3) >> 1) {//左右都有
-                maxIndex = compare(elements[leftIndex], elements[rightIndex]) > 0 ? leftIndex : rightIndex;
-            }
-            if (compare(elements[maxIndex], elements[index]) > 0) {
-                elements[index] = elements[maxIndex];
-                index = maxIndex;
-            } else {
-                break;
-            }
-        }
-        elements[index] = old;
+    private void emptyCheck(){
+       if(size == 0){
+           throw new RuntimeException("empty heap");
+       }
     }
 
     @Override
     public E remove() {
+        //用最后一个节点覆盖根结点
+        //删除最后一个节点
+        //下虑 和 最大的子节点互换
         emptyCheck();
-        E old = elements[0];
-        elements[0] = elements[size - 1];
-        elements[size - 1] = null;
-        size--;
+        E root = elements[0];
+        int lastIndex = --size;
+        elements[0]  = elements[lastIndex];
+        elements[lastIndex] = null;
+
         siftDown(0);
-        return old;
+
+        return root;
     }
 
+    private void siftDown(int index){
+        E cur = elements[index];
+
+        int haveChild = (size - 2) >> 1;
+        //index <= haveChild 有子节点
+        while(index <= haveChild){
+
+            int leftchildIndex = (index << 1) + 1;//左子节点
+            int rightChildIndex = leftchildIndex + 1;//右子节点
+            int maxChildIndex = leftchildIndex;
+
+            //有右子节点的时候
+            if( rightChildIndex < size ){
+               maxChildIndex = compare(elements[leftchildIndex],elements[rightChildIndex]) > 0? leftchildIndex:rightChildIndex;
+            }
+            E maxchild = elements[maxChildIndex];
+
+            if(compare(cur,maxchild) > 0) break; //index 就是目标位置
+
+            elements[index] = maxchild;
+            index = maxChildIndex;
+        }
+        elements[index] = cur;
+    }
+
+
+    /**
+     * 删除堆顶元素的同时插入一个新元素
+     * @param element
+     * @return
+     */
     @Override
     public E replace(E element) {
-        elementNotNullCheck(element);
-        E old = null;
+        nullCheck(element);
+
+        E root = null;
+
         if (size == 0) {
             elements[0] = element;
             size++;
         } else {
-            old = elements[0];
+            root = elements[0];
             elements[0] = element;
             siftDown(0);
         }
-        return old;
+        return root;
     }
 
 
-    @Override
-    public Object root() {
-        return 0;
-    }
+    /**
+     * 批量建堆
+     */
+    private void heapify() {
+        // 自上而下的上滤
+//		for (int i = 1; i < size; i++) {
+//			siftUp(i);
+//		}
 
-    @Override
-    public Object left(Object node) {
-        Integer index = (Integer) node;
-        index = (index << 1) + 1;
-        return index >= size ? null : index;
-    }
-
-    @Override
-    public Object right(Object node) {
-        Integer index = (Integer) node;
-        index = (index << 1) + 2;
-        return index >= size ? null : index;
-
-    }
-
-    @Override
-    public Object string(Object node) {
-        Integer index = (Integer) node;
-        return elements[index];
-    }
-}
-
-//
-class Test {
-    public static void main(String[] args) {
-        BinaryHeap<Integer> heap = new BinaryHeap<>();
-        heap.add(68);
-        heap.add(72);
-        heap.add(43);
-        heap.add(50);
-        heap.add(38);
-        heap.add(10);
-        heap.add(90);
-        heap.add(65);
-
-
-        int[] arr = {16,23,8,4,3,965,15,486,21};
-        for (int j : arr) {
-            heap.add(j);
+        // 自下而上的下滤
+        for (int i = (size >> 1) - 1; i >= 0; i--) {
+            siftDown(i);
         }
+    }
 
-        BinaryTrees.println(heap);
-////        heap.remove();
-////        BinaryTrees.println(heap);
-//
-//        System.out.println(heap.replace(70));
-//        BinaryTrees.println(heap);
+    public static void main(String[] args) {
+        Integer[] arr = {22,54,13,57,1,5,8,4,3,46,12,47,23};
+        BinaryHeap<Integer> heap = new BinaryHeap<Integer>(arr, (o1,o2) -> o2-o1);
+
+        System.out.println(heap.get());
+
     }
 }

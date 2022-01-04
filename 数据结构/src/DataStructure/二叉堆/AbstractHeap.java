@@ -2,11 +2,15 @@ package 二叉堆;
 
 import java.util.Comparator;
 
-public abstract  class AbstractHeap<E> implements Heap<E>{
+public abstract class AbstractHeap<E> implements Heap<E> {
+
     protected int size;
     protected Comparator<E> comparator;
 
-    public AbstractHeap(Comparator<E> comparator) {
+
+    public AbstractHeap(){}
+
+    public AbstractHeap(Comparator<E> comparator){
         this.comparator = comparator;
     }
 
@@ -20,17 +24,4 @@ public abstract  class AbstractHeap<E> implements Heap<E>{
         return size == 0;
     }
 
-    protected int compare(E e1, E e2){
-        if(comparator == null){
-            return ((Comparable<E>)e1).compareTo(e2);
-        }else{
-            return comparator.compare(e1, e2);
-        }
-    }
-
-    protected void elementNotNullCheck(E element){
-        if(element == null){
-            throw new RuntimeException("element can not be null");
-        }
-    }
 }

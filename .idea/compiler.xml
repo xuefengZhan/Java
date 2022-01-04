@@ -12,7 +12,6 @@
         <module name="JavaSE" />
         <module name="JDBC" />
         <module name="Mybatis" />
-        <module name="数据结构" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
