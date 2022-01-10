@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class collection_API {
+public class Collection01_collection {
     @Test
     public void test1(){
         Collection coll = new ArrayList();//ArrayList是Collection的子接口List的实现类
