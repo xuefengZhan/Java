@@ -1,9 +1,7 @@
 package LRU;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Solution {
 
@@ -16,7 +14,7 @@ public class Solution {
             this.value = value;
         }
     }
-    //get/set O(1) 必须hash表
+
     HashMap<Integer,Node> map = new HashMap<Integer,Node>();
     Node first;
     Node last;
@@ -27,22 +25,29 @@ public class Solution {
     public int[] LRU (int[][] operators, int k) {
         capacity = k;
         // write code here
-        List<Integer> res = new ArrayList<>();
+        int count = (int) Stream.of(operators).filter(x -> x.length == 2).count();
 
+        int[] res = new int[count];
+
+        System.out.println(count);
+
+        int i = 0;
         for (int[] operator : operators) {
             if(operator.length == 3){
                  put(operator[1],operator[2]);
             }else{
                 Node node = get(operator[1]);
                 if(node == null){
-                    res.add(-1);
+                    res[i] = -1;
+                    i++;
                 }else{
-                    res.add(node.value);
+                    res[i] = node.value;
+                    i++;
                 }
             }
         }
 
-        return res.toArray();
+        return res;
     }
 
     private void put(int key,int value){
@@ -66,16 +71,24 @@ public class Solution {
             Node newNode = new Node(value);
             map.put(key,newNode);
 
-            first.prev = newNode;
-            newNode.next = first;
+            removeToFirst( newNode );
 
             if(size < capacity){
                 size++;
             }else{
                 last.prev.next = null;
+                map.remove(key);
             }
         }else{
+            //有这个 更改值
+            node.value = value;
+            removeToFirst(node);
+        }
 
+        Node cur = first;
+        while(cur != null){
+            System.out.println(cur.value);
+            cur = cur.next;
         }
     }
 
@@ -89,8 +102,6 @@ public class Solution {
     }
 
     private void removeToFirst(Node node){
-        //有这个 更改值
-        node.value = value;
 
         //更改结构
         Node prev = node.prev;
@@ -113,5 +124,12 @@ public class Solution {
         first = node;
     }
 
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[][] operators = {{1,1,1},{1,2,2},{1,3,2} ,{2,1},{1,4,4},{2,2}};
+        int k = 3;
+        int[] lru = solution.LRU(operators, k);
 
+        System.out.println(Arrays.toString(lru));
+    }
 }
