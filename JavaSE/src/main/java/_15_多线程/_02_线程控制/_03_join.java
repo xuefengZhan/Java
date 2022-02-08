@@ -24,19 +24,20 @@ public class _03_join {
             }
         }
     }
-}
-
-class ChatThread extends Thread{
-    public void run(){
-        Scanner input = new Scanner(System.in);
-        while(true){
-            System.out.println("是否结束？（Y、N）");
-            char confirm = input.next().charAt(0);
-            if(confirm == 'Y' || confirm == 'y'){
-                break;
+    public static class ChatThread extends Thread{
+        public void run(){
+            Scanner input = new Scanner(System.in);
+            while(true){
+                System.out.println("是否结束？（Y、N）");
+                char confirm = input.next().charAt(0);
+                if(confirm == 'Y' || confirm == 'y'){
+                    break;
+                }
             }
+            input.close();
         }
-        input.close();
     }
 }
+
+
 

@@ -14,19 +14,21 @@ public class _01_Thread {
             System.out.println(name + " " + i);
         }
     }
-}
-class MyThread extends  Thread{
-    @Override
-    public void run() {
-        for (int i = 0; i < 100; i++) {
-            System.out.println(this.getName() + i);
+
+    static class MyThread extends  Thread{
+        @Override
+        public void run() {
+            for (int i = 0; i < 100; i++) {
+                System.out.println(this.getName() + i);
+            }
+        }
+
+        public MyThread() {
+        }
+
+        public MyThread(String name) {
+            super(name);
         }
     }
-
-    public MyThread() {
-    }
-
-    public MyThread(String name) {
-        super(name);
-    }
 }
+
