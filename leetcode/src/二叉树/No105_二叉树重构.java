@@ -3,56 +3,63 @@ package 二叉树;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ *      https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/submissions/
+        5.76%
+ */
 public class No105_二叉树重构 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if(preorder == null || preorder.length == 0) return null;
         if(inorder.length == 1) return new TreeNode(inorder[0]);
 
-        TreeNode root = new TreeNode(preorder[0]);
-        int mid = findIndex(inorder,preorder[0]);
-        int[] prev = ArrayCopy(preorder,1,mid);
+        int rootVal = preorder[0];
+        int index = indexOf(inorder, rootVal);
 
-        int[] aft = ArrayCopy(preorder,mid+1,preorder.length-1);
-        int[] left = ArrayCopy(inorder,0,mid-1);
-        int[] right = ArrayCopy(inorder,mid+1,inorder.length-1);
-        System.out.println(Arrays.toString(prev));
-        System.out.println(Arrays.toString( aft));
-        System.out.println(Arrays.toString(left));
-        System.out.println(Arrays.toString(right));
+        int[] leftInorder = copy(inorder,0,index-1);
+        int[] rightInorder = copy(inorder,index + 1,inorder.length - 1);
 
-        root.left = buildTree(prev,left);
-        root.right = buildTree(aft,right);
+        int[] leftPreorder = copy(preorder,1,index);
+        int[] rightPreorder = copy(preorder,index+1,preorder.length-1);
+
+        TreeNode root = new TreeNode(rootVal);
+
+        TreeNode leftRoot = buildTree(leftPreorder,leftInorder);
+        TreeNode rightRoot = buildTree(rightPreorder,rightInorder);
+
+        root.left = leftRoot;
+        root.right = rightRoot;
 
         return root;
     }
 
-
-
-
-
-    private int findIndex(int[] inorder,int val){
-        for (int i = 0; i < inorder.length; i++) {
-            if(inorder[i] == val){
-                return i;
-            }
+    private int indexOf(int[] arr,int target){
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] == target) return i;
         }
         return -1;
     }
 
 
-    private int[] ArrayCopy(int[] arr,int start,int end){
-        int[] newArr = new int[end - start + 1];
-        for (int i = start; i <= end; i++) {
-            newArr[i-start] = arr[start];
+    private int[] copy(int[] arr,int start,int end){
+
+        int[] tmp = new int[end - start + 1];
+        int tmpi = 0;
+        for (int i = start; i <=  end; i++) {
+            tmp[tmpi] = arr[i];
+            tmpi++;
         }
-        return newArr;
+        return tmp;
     }
+
+
+
+
+
+
+
 
     public static void main(String[] args) {
         No105_二叉树重构 v = new No105_二叉树重构();
-        int[] preorder = {3,9,20,15,7};
-        int[] inorder = {9,3,15,20,7};
-        TreeNode treeNode = v.buildTree(preorder, inorder);
 
-        System.out.println(treeNode);
     }
 }
