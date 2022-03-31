@@ -34,7 +34,7 @@ public class No46_全排列 {
             //递归 path[index + 1]
             place(path,nums,usedEle);
 
-            //回溯
+            //回溯 当前的选择
             path.remove(path.size() - 1);
             usedEle.remove(nums[i]);
 
