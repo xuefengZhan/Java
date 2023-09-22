@@ -24,9 +24,4 @@ public class TreeNode {
                 '}';
     }
 
-    public static void add(int[] arr){
-        Queue<Integer> que = new LinkedList<Integer>();
-
-
-      }
   }

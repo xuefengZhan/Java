@@ -1,6 +1,7 @@
 package 排序;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NC119_最小的K个数 {
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
@@ -39,6 +40,7 @@ public class NC119_最小的K个数 {
         int right = end;
 
 
+        System.out.println("pivot==" + pivot);
         while(left <= right){
             if(arr[left] <= pivot){
                 left++;
@@ -51,6 +53,7 @@ public class NC119_最小的K个数 {
                 arr[left] = arr[right];
                 arr[right] = tmp;
             }
+            System.out.println(Arrays.toString(arr));
         }
         //left = right + 1   arr[left] > pivot   arr[right] <= pivot
 
@@ -58,7 +61,7 @@ public class NC119_最小的K个数 {
         int tmp = arr[right];
         arr[right] = pivot;
         arr[start] = tmp;
-
+        System.out.println(Arrays.toString(arr));
         return right;
 
     }
@@ -71,5 +74,8 @@ public class NC119_最小的K个数 {
 
         ArrayList<Integer> integers = v.GetLeastNumbers_Solution(input, k);
         System.out.println(integers);
+
+
+//        System.out.println(v.getPoint(new int[]{5,6,7,8,9},0,4));
     }
 }
