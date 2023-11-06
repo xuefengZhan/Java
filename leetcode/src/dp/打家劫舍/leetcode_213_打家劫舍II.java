@@ -1,6 +1,4 @@
-package dp.Mid;
-
-import java.util.Arrays;
+package dp.打家劫舍;
 
 /**
  * @ClassName leetcode_213_打家劫舍II

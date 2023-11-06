@@ -19,7 +19,7 @@ public class leetcode_310_最小高度树 {
             return res;
         }
         ArrayList<Integer>[] map = new ArrayList[n];  //index是节点 list是子节点
-        int[] arr = new int[n];
+        int[] arr = new int[n]; //i是节点 arr[i]是该节点出度
 
         for (int i = 0; i < map.length; i++) {
             map[i] = new ArrayList<>();

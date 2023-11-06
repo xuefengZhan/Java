@@ -1,4 +1,4 @@
-package dp.Mid;
+package dp.路径问题;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,9 @@ import java.util.List;
  * 这一题和64题区别在于 64题求的是到达某一明确点的最小路径  这题是最底层多个点中的最小值 本质是不变的
  * 直接用一个变量存当前层最小值即可
  **/
-public class leetcode_120_三角形最小路径和 {
+public class
+
+leetcode_120_三角形最小路径和 {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size();
 

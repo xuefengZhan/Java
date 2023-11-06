@@ -1,10 +1,10 @@
 package 二分查找;
 
-public class No704_二分查找 {
+public class leetcode_704_二分查找 {
     public int search(int[] nums, int target) {
 
 
-        //todo 1.定义区间  左臂右臂
+        //todo 1.定义区间  左闭右闭
 
             int start = 0;
             int end = nums.length -1;

@@ -1,6 +1,4 @@
-package dp.Mid;
-
-import java.util.Arrays;
+package dp.字符串;
 
 /**
  * @ClassName leetcode_5_最长回文子串
@@ -9,6 +7,7 @@ import java.util.Arrays;
  * @Questinon Describrition
  **/
 public class leetcode_5_最长回文子串 {
+
     public String longestPalindrome(String s) {
         int len = s.length();
 
@@ -20,29 +19,23 @@ public class leetcode_5_最长回文子串 {
 
         String res = null;
 
-
-        //遍历顺序：dp[i][j] 由dp[i+1][j-1]确定，所以必须得先确定dp[i+1][j-1]
-        //所以得从下往上 从左往右
         for (int i = len-1; i >=0; i--) {
             for (int j = i; j < len; j++) {
                 if(j == i){
                     dp[i][j] = true;
-                }else if(charArray[i] == charArray[j]){
-                    if(j == i + 1 || dp[i+1][j-1]){
-                        dp[i][j] = true;
-                    }
+                }else if(j == i + 1 && charArray[i] == charArray[j]){
+                    dp[i][j] = true;
+                }else if(dp[i+1][j-1] && charArray[i] == charArray[j]){
+                    dp[i][j] = true;
                 }
 
-                if(dp[i][j] && j - i + 1 > maxLen){
-                    res = s.substring(i,j+1);
+                if(dp[i][j]){
+                    if(j - i + 1 > maxLen){
+                        res = s.substring(i,j+1);
+                    }
                     maxLen = Math.max(maxLen,j - i + 1);
                 }
-
             }
-        }
-
-        for (boolean[] booleans : dp) {
-            System.out.println(Arrays.toString(booleans));
         }
 
         return res;
@@ -52,7 +45,7 @@ public class leetcode_5_最长回文子串 {
     public static void main(String[] args) {
         leetcode_5_最长回文子串 v = new leetcode_5_最长回文子串();
 
-        String s = "cbad";
+        String s = "aacabdkacaa";
         String res = v.longestPalindrome(s);
 
         System.out.println(res);
