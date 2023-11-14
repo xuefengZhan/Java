@@ -1,4 +1,4 @@
-package dp.Mid;
+package dp.树;
 
 /**
  * @ClassName leetcode_96_不同的二叉搜索树
