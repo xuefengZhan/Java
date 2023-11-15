@@ -1,4 +1,6 @@
-package 二叉树;
+package 二叉树.二叉树重构;
+
+import 二叉树.TreeNode;
 
 /**
  * @ClassName leetcode_106_从中序和后序遍历序列构造二叉树
