@@ -15,12 +15,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="_java" target="8" />
-      <module name="JavaSE" target="8" />
-      <module name="JDBC" target="8" />
-      <module name="JVM" target="8" />
+      <module name="_java" target="1.8" />
+      <module name="JavaSE" target="1.8" />
+      <module name="JDBC" target="1.8" />
+      <module name="JVM" target="1.8" />
       <module name="leetcode" target="1.8" />
-      <module name="Mybatis" target="8" />
+      <module name="Mybatis" target="1.8" />
       <module name="数据结构" target="1.8" />
     </bytecodeTargetLevel>
   </component>

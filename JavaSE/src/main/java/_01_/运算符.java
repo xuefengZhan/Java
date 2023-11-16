@@ -30,6 +30,8 @@ public class 运算符 {
         System.out.println(-7%2);//-1
         System.out.println(-7%-2);//-1
 
+        System.out.println(27 % 3);
+
         //取模的符号跟左边对其
     }
 

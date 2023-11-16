@@ -1,4 +1,4 @@
-package 二叉堆;
+package DataStructure.二叉堆;
 
 public interface Heap<E> {
     int size();    // 元素的数量

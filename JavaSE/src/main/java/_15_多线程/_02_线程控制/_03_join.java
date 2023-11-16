@@ -15,6 +15,7 @@ public class _03_join {
                 e.printStackTrace();
             }
             //当main打印到5之后，需要等join进来的线程停止后才会继续了。
+            //如果一直输入n,那么t线程一直无法结束，那么就会一直循环，从而main线程无法继续
             if(i==5){
                 try {
                     t.join();

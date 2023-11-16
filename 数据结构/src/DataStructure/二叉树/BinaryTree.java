@@ -1,6 +1,6 @@
-package 二叉树;
+package DataStructure.二叉树;
 
-import 二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTreeInfo;
+import DataStructure.二叉树.BinaryTreePrinter.src.com.mj.printer.BinaryTreeInfo;
 
 import java.util.LinkedList;
 import java.util.Queue;

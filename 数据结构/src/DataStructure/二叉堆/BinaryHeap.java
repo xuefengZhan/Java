@@ -1,4 +1,4 @@
-package 二叉堆;
+package DataStructure.二叉堆;
 
 import java.util.Comparator;
 

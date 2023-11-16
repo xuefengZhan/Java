@@ -8,6 +8,8 @@ import java.util.Objects;
  * @Author zxf
  * @Date 2023/11/3 18:14
  * @Questinon Describrition
+ *
+ * 本题和971题有相似之处
  **/
 public class leetcode_297_二叉树的序列化和反序列化 {
 

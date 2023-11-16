@@ -1,4 +1,4 @@
-package 线性表;
+package DataStructure.线性表;
 
 public class LinkedList<E> extends AbstractList<E> {
 

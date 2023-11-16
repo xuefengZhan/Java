@@ -1,4 +1,4 @@
-package 二叉树.BinaryTreePrinter.src.com.mj.printer;
+package DataStructure.二叉树.BinaryTreePrinter.src.com.mj.printer;
 
 public class Strings {
 	public static String repeat(String string, int count) {

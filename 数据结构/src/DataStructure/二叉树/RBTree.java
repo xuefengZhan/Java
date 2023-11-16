@@ -1,4 +1,4 @@
-package 二叉树;
+package DataStructure.二叉树;
 
 public class RBTree<E> extends BalancedBinarySearchTree<E> {
     private static final boolean RED = true;

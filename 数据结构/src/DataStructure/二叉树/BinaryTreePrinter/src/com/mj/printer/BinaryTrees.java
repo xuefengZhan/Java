@@ -1,4 +1,4 @@
-package 二叉树.BinaryTreePrinter.src.com.mj.printer;
+package DataStructure.二叉树.BinaryTreePrinter.src.com.mj.printer;
 
 /**
  * 
