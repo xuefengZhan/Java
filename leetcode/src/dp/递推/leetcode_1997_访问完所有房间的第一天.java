@@ -1,4 +1,13 @@
-public class test {
+package dp.递推;
+
+/**
+ * @ClassName leetcode_1997_访问完所有房间的第一天
+ * @Author zxf
+ * @Date 2024/3/28 11:23
+ * @Questinon Describrition
+ **/
+public class leetcode_1997_访问完所有房间的第一天 {
+
 
     public int firstDayBeenInAllRooms(int[] nextVisit) {
         int n = nextVisit.length;

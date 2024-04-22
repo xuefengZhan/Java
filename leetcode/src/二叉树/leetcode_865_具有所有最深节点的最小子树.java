@@ -5,53 +5,52 @@ package 二叉树;
  * @Author zxf
  * @Date 2023/11/14 11:51
  * @Questinon Describrition
+ *
+ *
+ * 后序遍历的经典应用  这题要多看  和1123是一样的题目
  **/
 public class leetcode_865_具有所有最深节点的最小子树 {
 
-    public TreeNode lcaDeepestLeaves(TreeNode root) {
-        return f(root).getKey();
-    }
-
-    private class Pair<T,Y>{
-        T t;
-        Y y;
-
-        public Pair(){}
-
-        public Pair(T t,Y y){
-            this.t = t;
-            this.y = y;
+    private class info{
+        TreeNode node;
+        int deepth;
+        public info(){};
+        public info(TreeNode node,int deepth){
+            this.node = node;
+            this.deepth = deepth;
         }
 
-
-        public T getKey(){
-            return t;
+        public TreeNode getNode() {
+            return node;
         }
 
-        public Y getValue(){
-            return y;
+        public int getDeepth() {
+            return deepth;
         }
     }
-    private Pair<TreeNode, Integer> f(TreeNode root) {
-        if (root == null) {
-            return new Pair<>(root, 0);
+
+    private info dfs(TreeNode node,int deepth){
+        if(node == null) return new info(null,-1);
+        if(node.left == null && node.right == null){
+            return new info(node,deepth);
         }
 
-        Pair<TreeNode, Integer> left = f(root.left);
-        Pair<TreeNode, Integer> right = f(root.right);
 
-        //返回深一点的子节点
-        if (left.getValue() > right.getValue()) {
-            return new Pair<>(left.getKey(), left.getValue() + 1);
+        info left = dfs(node.left, deepth + 1);
+        info right = dfs(node.right, deepth + 1);
+
+
+        if(left.getDeepth() == right.getDeepth()){
+            return new info(node,left.getDeepth());
+        }else if(left.getDeepth() > right.getDeepth()){
+            return left;
+        }else{
+            return right;
         }
-        if (left.getValue() < right.getValue()) {
-            return new Pair<>(right.getKey(), right.getValue() + 1);
-        }
-        return new Pair<>(root, left.getValue() + 1);
+
     }
 
-//    作者：力扣官方题解
-//    链接：https://leetcode.cn/problems/lowest-common-ancestor-of-deepest-leaves/
-//    来源：力扣（LeetCode）
-//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    public TreeNode subtreeWithAllDeepest(TreeNode root) {
+        return dfs(root,0).getNode();
+    }
 }

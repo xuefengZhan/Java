@@ -14,16 +14,16 @@ import java.util.Objects;
  **/
 
 public class leetcode_331_验证二叉树的前序序列化 {
-    public boolean isValidSerialization(String preorder) {
-        String[] nodes = preorder.split(",");
-    }
-
-    int index = 0;
-    private boolean dfs(String[] words){
-        if(Objects.equals(words[index++], "#")){
-            return true;
-        }
-
-        dfs(words);
-    }
+//    public boolean isValidSerialization(String preorder) {
+//        String[] nodes = preorder.split(",");
+//    }
+//
+//    int index = 0;
+//    private boolean dfs(String[] words){
+//        if(Objects.equals(words[index++], "#")){
+//            return true;
+//        }
+//
+//        dfs(words);
+//    }
 }
