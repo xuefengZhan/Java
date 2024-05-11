@@ -1,4 +1,4 @@
-package dp.入门.爬楼梯;
+package dp.No01_入门.爬楼梯;
 
 /**
  * @ClassName leetcode_746_使用最小花费爬楼梯

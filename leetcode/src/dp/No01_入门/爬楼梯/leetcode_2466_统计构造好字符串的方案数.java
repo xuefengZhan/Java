@@ -1,4 +1,4 @@
-package dp.入门.爬楼梯;
+package dp.No01_入门.爬楼梯;
 
 /**
  * @ClassName leetcode_2466_统计构造好字符串的方案数

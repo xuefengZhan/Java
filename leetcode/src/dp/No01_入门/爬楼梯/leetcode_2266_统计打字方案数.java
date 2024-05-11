@@ -1,6 +1,4 @@
-package dp.入门.爬楼梯;
-
-import java.util.Arrays;
+package dp.No01_入门.爬楼梯;
 
 /**
  * @ClassName leetcode_2266_统计打字方案数

@@ -1,4 +1,4 @@
-package dp.入门.打家劫舍;
+package dp.No01_入门.打家劫舍;
 
 /**
  * @ClassName leetcode_740_删除并获得点数

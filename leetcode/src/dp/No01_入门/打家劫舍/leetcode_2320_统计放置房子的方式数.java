@@ -1,4 +1,4 @@
-package dp.入门.打家劫舍;
+package dp.No01_入门.打家劫舍;
 
 /**
  * @ClassName leetcode_2320_统计放置房子的方式数
